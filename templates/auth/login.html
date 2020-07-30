@@ -1,0 +1,32 @@
+{%extends 'base.html'%} {%block body%}
+<nav style="background-color: #1b1d1f; padding-left: 2rem">
+    <div class="nav-wrapper">
+        <a class="brand-logo">Voxy</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href = "/auth/signup/"><button class="waves-effect waves-light btn" style="background-color: snow; color: black;"> Signup !!!</button></a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col s4 offset-s4"> 
+        <div class="card-panel">
+            <div class="card-content ">
+                <h3 class="card-title">Login !!</h3>
+            </div>
+            <form method="POST">
+                {% csrf_token%} {{form}}
+                <br>
+                <br>
+                <button type="submit" class="waves-effect waves-light btn">Submit</a></button>
+            </form>
+            <div class="card-action">
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+</div>
+{%endblock%}

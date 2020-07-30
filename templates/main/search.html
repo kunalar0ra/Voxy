@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+{%block body%}
+{%include 'components\navbar.html' %}<div class="container"><form method="POST">
+    {% csrf_token %}<br><br>
+    {{search}}<br><br>
+    <button type="submit" class="waves-effect waves-light btn">Submit</button><br><br>
+</form>
+
+    {%for profile in searchresult%}
+    <div class="card horizontal">
+        <div class="card-image">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+          <ul>
+              <li><a href="/id/{{profile.id}}"><h4 class="header" style="color: black;">@{{profile.username}}</h4></a></li>
+              <li>First Name : {{profile.first_name}}</li>
+              <li>Last Name : {{profile.last_name}}</li>
+              <li>Email : {{profile.email}}</li>
+              <hr>
+              <br>
+              <a href="/id/{{profile.id}}"><button class="btn waves-effect waves-light" >View Profile</button></a>
+          </ul>
+          </div>
+          </div></div>
+    {%endfor%}
+</div><hr> <div class="container">   <h3>Recieved requests : </h3>
+    <br>
+    
+    {%for profile in friendlist%}
+    <div class="card horizontal">
+        <div class="card-image">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+          <ul>
+              <li><a href="/id/{{profile.id}}" ><h4 class="header" style="color: black;">@{{profile.username}}</h4></a></li>
+              <li>First Name : {{profile.first_name}}</li>
+              <li>Last Name : {{profile.last_name}}</li>
+              <li>Email : {{profile.email}}</li>
+          </ul>
+          </div>
+          <div class="card-action">
+              <a href="#" onclick="addfriend({{profile.id}})"><button class="waves-effect waves-light btn" style="background-color: black; color: snow;">Add Friend</button></a>
+              <a href="#" onclick="cancel({{profile.id}})"><button class="waves-effect waves-light btn" style="background-color: black; color: snow;">Cancel</button></a>
+          </div>
+          </div></div>
+    {%endfor%}
+    
+</div>
+<hr>
+{%endblock%}
+

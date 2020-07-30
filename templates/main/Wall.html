@@ -1,0 +1,15 @@
+{%extends 'base.html'%} 
+{%block body%} 
+{%include 'components\navbar.html' %}
+<div class="container">
+    <span><h3 style="padding-left: 3rem;">Wall ...</h3></span><br><hr>  <br><div class="container">
+    {%for post in posts%}
+        <div class='row'>
+            <div class="col-s12">
+                {%include 'components\post.html'%}
+            </div>
+        </div>
+    {%endfor%}
+</div>
+</div> 
+{%endblock%}

@@ -1,0 +1,15 @@
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="/id/{{request.user.id}}/">Your Profile<i class="material-icons right">account_circle</i></a></li>
+    <li class="divider"></li>
+    <li><a href="/auth/logout?next=/auth/login/">Logout</a></li>
+  </ul>
+<nav style="background-color: #1b1d1f;">
+    <div class="nav-wrapper">
+        <a href="/wall/" class="brand-logo" style="padding-left: 2rem;">Voxy</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href = "/home/"><i class="material-icons left" style="margin-left: 2rem;">art_track</i>Home..</a></li>
+            <li><a href="/friends/"><i class="material-icons left" style="margin-left: 2rem;">search</i>Friends</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Hello {{request.user.first_name}} {{request.user.last_name}}<i class="material-icons right style="margin-right: 2rem;"">arrow_drop_down</i></a></li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{%block body%}
+{%include 'components\navbar.html' %}
+    <div class="container">
+        <div class="col s12 m7">
+            <h3 class="header">@{{profile.username}}</h3>
+            <div class="card horizontal">
+              <div class="card-image">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                <ul>
+                    <li>First Name : {{profile.first_name}}</li>
+                    <li>Last Name : {{profile.last_name}}</li>
+                    <li>Email : {{profile.email}}</li>
+                </ul>
+                </div>
+                <div class="card-action">
+                    {%if same%}
+                        <a href="" >Edit Profile</a>
+                        
+                    {%else%}
+                        {%if not friend %}
+                            {% if not gotrequest%}
+                                <a href="/home/" onclick="sendRequest({{profile.id}} )">Send Friend Request</a>
+                            {%endif%}
+                            {%if gotrequest%}          
+                                <a href="#" onclick="addfriend({{profile.id}})"><button class="waves-effect waves-light btn" style="background-color: black; color: snow;">Add Friend</button></a>
+                                <a href="#" onclick="cancel({{profile.id}})"><button class="waves-effect waves-light btn" style="background-color: black; color: snow;">Cancel</button></a>
+                            {%endif%}
+                        {%else%}
+                        <a href="/mess/{{profile.id}}"><button class="waves-effect waves-light btn-large" style="background-color: black; color: snow;">Chat...</button></a>
+                        {%endif%}
+                    {%endif%}
+                </div>
+              </div>
+            </div>
+            {%if friend or same %}
+            <br>
+            <br>
+
+                <hr>
+                <h3>
+                    Recent posts by {{profile.username}}
+                    <hr>
+                </h3>
+                
+                <div>
+                    {%for post in posts%}
+                        {%include 'components\post.html'%}
+                    {%endfor%}
+                </div>
+            {%endif%}
+        </div>
+    </div>
+{%endblock%}
